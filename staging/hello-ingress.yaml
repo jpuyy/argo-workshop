@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: hello-node
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: hello.awx.demo
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: hello-node
+          servicePort: 8080
